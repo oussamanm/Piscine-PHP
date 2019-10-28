@@ -1,0 +1,47 @@
+/*
+<?php
+    function exist_user($content, $name)
+    {
+        $content = unserialize($content);
+        print_r($content);
+        foreach ($content as $key => $value)
+        {
+            echo "--->to check ".$content[$key]['login']."\n";
+            //if ($content[$key]['login'] === $name)
+            //    return (TRUE);
+        }
+        return (FALSE);
+    }
+
+    $name = $_POST['login'];
+    $passwd = $_POST['passwd'];
+    $file_name = "../private/passwd";
+
+    if (!file_exists("../private"))
+        mkdir("../private");
+    if ($_POST['submit'] === "OK" && $passwd !== "" && $name !== "")
+    {
+        if (file_exists($file_name))
+            $content = file_get_contents($file_name);
+
+        $exist_user = FALSE;
+        if ($content != NULL)
+            $exist_user = exist_user($content, $name);
+        if ($exist_user == FALSE)
+        {
+            $passwd = hash('whirlpool', $passwd);
+            $USER_ACCOUNT[] = ['login' => $name,'passwd' => $passwd];
+            $USER_ACCOUNT = serialize($USER_ACCOUNT);
+            file_put_contents($file_name, $USER_ACCOUNT, FILE_APPEND);
+            echo "OK\n";
+        }
+        else
+            echo "ERROR\n";
+    }
+    else
+        echo "ERROR\n";
+?>
+*/
+
+
+- check unautorized function

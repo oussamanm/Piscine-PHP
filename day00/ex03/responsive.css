@@ -1,0 +1,222 @@
+    @media only screen and (max-width: 1258px)
+    {   
+        .p_num
+        {
+            font-size: 10px !important;
+        }
+        .p_sym
+        {
+            font-size: 15px !important;
+            position: absolute !important;
+            top: 40% !important;
+        }
+        .p_ato
+        {
+            font-size: 10px !important;
+        }
+    }
+    @media (max-height: 920px)
+    {
+        table td
+        {
+            height: 80px !important;
+        }
+        .p_num
+        {
+            font-size: 10px !important;
+        }
+        .p_sym
+        {
+            font-size: 15px !important;
+            position: absolute !important;
+            top: 40% !important;
+        }
+        .p_ato
+        {
+            font-size: 10px !important;
+        }
+    }
+
+
+    @media only screen and (max-width: 867px)
+    {  
+        .p_num
+        {
+            font-size: 8px !important;
+        }
+        .p_sym
+        {
+            font-size: 10px !important;
+            position: absolute !important;
+            top: 40% !important;
+        }
+        .p_ato
+        {
+            font-size: 8px !important;
+        }
+    }
+    @media (max-height: 740px)
+    {
+        table td
+        {
+            height: 60px !important;
+        }
+        .p_num
+        {
+            font-size: 8px !important;
+        }
+        .p_sym
+        {
+            font-size: 10px !important;
+            position: absolute !important;
+            top: 40% !important;
+        }
+        .p_ato
+        {
+            font-size: 8px !important;
+        }
+    }
+
+    @media only screen and (max-width: 700px)
+    {  
+        .p_num
+        {
+            font-size: 6px !important;
+        }
+        .p_sym
+        {
+            font-size: 8px !important;
+            position: absolute !important;
+            top: 40% !important;
+        }
+        .p_ato
+        {
+            font-size: 6px !important;
+        }
+    }
+    @media (max-height: 560px)
+    {
+        table td
+        {
+            height: 45px !important;
+        }
+        .p_num
+        {
+            font-size: 6px !important;
+        }
+        .p_sym
+        {
+            font-size: 8px !important;
+            position: absolute !important;
+            top: 40% !important;
+        }
+        .p_ato
+        {
+            font-size: 6px !important;
+        }
+    }
+
+    @media only screen and (max-width: 567px)
+    {  
+        .p_num
+        {
+            font-size: 4px !important;
+        }
+        .p_sym
+        {
+            font-size: 6px !important;
+            position: absolute !important;
+            top: 40% !important;
+        }
+        .p_ato
+        {
+            font-size: 4px !important;
+        }
+    }
+    @media (max-height: 429px)
+    {
+        table td
+        {
+            height: 34px !important;
+        }
+        .p_num
+        {
+            font-size: 4px !important;
+        }
+        .p_sym
+        {
+            font-size: 6px !important;
+            position: absolute !important;
+            top: 40% !important;
+        }
+        .p_ato
+        {
+            font-size: 4px !important;
+        }
+    }
+
+    @media (max-height: 330px)
+    {
+        table td
+        {
+            height: 3px !important;
+        }
+        .p_num
+        {
+            font-size: 2px !important;
+        }
+        .p_sym
+        {
+            font-size: 4px !important;
+            position: absolute !important;
+            top: 40% !important;
+        }
+        .p_ato
+        {
+            font-size: 2px !important;
+        }
+    }
+
+    body
+    {
+        background-image: url("./breaking-bad-988056.jpg");
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .p_num
+    {
+        font-size: 15px;
+        text-align: left;
+        position: absolute;
+        bottom: 0%;
+    }
+    .p_sym
+    {
+        font-size: 25px;
+        font-weight: bold;
+        text-align: center;
+        position: absolute;
+        top: 30%;
+    }
+    .p_ato
+    {
+        font-size: 15px;
+        text-align: right;
+    }
+    table td
+    {
+        width: 6%;
+        height: 100px;
+        position: relative;
+    }
+    td div
+    {
+        float: center;
+        border: 1px solid black;
+        height: 100%;
+        width: 100%;
+    }
