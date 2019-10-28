@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <style>
+            #balloon 
+            {
+                background-color: red;
+                border-radius: 50%;
+                width: 200px;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="balloon" onclick="balloon_click()" onmouseleave="mouse_leave()"></div>
+    </body>
+    <script>
+        const _element = document.getElementById('balloon');
+        const _style = _element.style;
+        const colors = [ 'red', 'green', 'blue' ];
+        let colorIndex = 0;
+
+        function set_size_balloone(size_ball)
+        {
+            if (size_ball > 420 || size_ball < 200)
+            {
+                _style.width = 200 + 'px';
+                _style.height = 200 + 'px';
+            }
+            else
+            {
+                _style.width = size_ball;
+                _style.height = size_ball;
+            }
+        }
+
+        function balloon_click()
+        {
+            colorIndex = (colorIndex == (colors.length - 1)) ? 0 : colorIndex + 1;
+            with_balloon = _element.offsetWidth + 10;
+            _style.backgroundColor = colors[colorIndex];
+            set_size_balloone(with_balloon);
+        }
+
+        function mouse_leave()
+        {
+            colorIndex = (colorIndex == 0) ?  (colors.length - 1): colorIndex - 1;
+            with_balloon = _element.offsetWidth - 5;
+            _style.backgroundColor = colors[colorIndex];
+            set_size_balloone(with_balloon);
+        }
+    </script>
+</html>

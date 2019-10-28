@@ -1,0 +1,125 @@
+SELECT `title`,`summary` FROM `film` WHERE LOWER(`summary`) LIKE '%vincent%';
+SELECT `title`,`summary` FROM `film` WHERE (`summary` LIKE '%42%' OR `title` LIKE '%42%') order by `duration`;
+SELECT `last_name`,`first_name`,DATE(`birthdate`) as `birthdate` from `user_card` WHERE DATE_FORMAT(`birthdate`, '%Y') = '1989' ORDER BY `last_name` ASC;
+SELECT COUNT(*) as `nb_short-films` FROM `film` WHERE `duration` <= 42;
+
+SELECT `title` as `Title`, `summary` as `Summary`, `prod_year` FROM `film`,`genre` WHERE `film`.`id_genre` = `genre`.`id_genre` AND `genre`.`name` = 'erotic' ORDER BY `film`.`prod_year` DESC;
+SELECT `title`,`summary`,`prod_year` FROM `film` INNER JOIN `genre` ON `film`.`id_genre` = `genre`.`id_genre` AND `genre`.`name` = 'erotic';
+
+SELECT UPPER(`last_name`) as `NAME`,`first_name`,`tb_sb`.`price` as `price` FROM `user_card` as `tb_us` 
+INNER JOIN `member` as `tb_mb` ON `tb_mb`.`id_user_card`=`tb_us`.`id_user`
+INNER JOIN	`subscription` as `tb_sb` ON `tb_sb`.`id_sub` = `tb_mb`.`id_sub` AND `tb_sb`.`price` > 42
+ORDER BY `NAME`,`tb_us`.`first_name`
+
+---
+
+SELECT AVG(`nb_seats`) as `average` FROM `cinema` GROUP BY `id_cinema`;
+
+SELECT `floor_number` as `floor`, SUM(`nb_seats`) as seats FROM `cinema` group by `floor_number`;
+
+SELECT REVERSE(SUBSTRING(`phone_number`, 2)) FROM `distrib` WHERE LEFT(`phone_number`, 2) = "05";
+
+
+SELECT COUNT(*) FROM `film` WHERE `last_projection` BETWEEN '2006/10/30' AND ''
+
+SELECT COUNT(*) as `movies` FROM `film` WHERE  DATE_FORMAT(`last_projection`,'%M/%d') = "12/24" OR `last_projection` BETWEEN '1999/01/01' AND '2007/07/27'
+
+SELECT * FROM `distrib` WHERE `id_distrib` IN (42,62,63,64,65,66,67,68,69,71,88,89,90) AND (LENGTH(`name`) - LENGTH(REPLACE(LOWER(`name`), 'y', ''))) = 2 LIMIT 2,5;
+
+
+
+-*------------
+
+
+/*
+   SELECT `title`,`summary` FROM `film` WHERE LOWER(`summary`) LIKE '%vincent%';
+
+   SELECT `title`,`summary` FROM `film` WHERE (`summary` LIKE '%42%' OR `title` LIKE '%42%') order by `duration`;
+
+   SELECT `last_name`,`first_name`,DATE(`birthdate`) as `birthdate` from `user_card` WHERE DATE_FORMAT(`birthdate`, '%Y') = '1989' ORDER BY `last_name` ASC;
+
+   SELECT COUNT(*) as `nb_short-films` FROM `film` WHERE `duration` <= 42;
+
+
+   SELECT `title` as `Title`, `summary` as `Summary`, `prod_year` FROM `film`,`genre` WHERE `film`.`id_genre` = `genre`.`id_genre` AND `genre`.`name` = 'erotic' ORDER BY `film`.`prod_year` DESC;
+   SELECT `title`,`summary`,`prod_year` FROM `film` INNER JOIN `genre` ON `film`.`id_genre` = `genre`.`id_genre` AND `genre`.`name` = 'erotic';
+
+
+   SELECT UPPER(`last_name`) as `NAME`,`first_name`,`tb_sb`.`price` as `price` FROM `user_card` as `tb_us` 
+   INNER JOIN `member` as `tb_mb` ON `tb_mb`.`id_user_card`=`tb_us`.`id_user`
+   INNER JOIN	`subscription` as `tb_sb` ON `tb_sb`.`id_sub` = `tb_mb`.`id_sub` AND `tb_sb`.`price` > 42
+   ORDER BY `NAME`,`tb_us`.`first_name`
+
+
+   SELECT  FROM `user_card` GROUP BY `first_name` HAVING COUNT(`first_name`) > 1;
+
+
+   SELECT AVG(`nb_seats`) as `average` FROM `cinema` GROUP BY `id_cinema`;*/
+
+/* ex12 */
+
+SELECT `mbr`.`id_member`,`usr`.`last_name`, `usr`.`first_name` FROM `member` AS `mbr`
+INNER JOIN `user_card` AS `usr` ON `usr`.`id_user`=`mbr`.`id_member`
+WHERE INSTR(`usr`.`last_name`,"-") != 0 OR INSTR(`usr`.`first_name`,"-") != 0
+
+
+/*	ex14
+	For each floor,
+	---> display - the floor_number ,’floor’ column
+	- nb_seats by floor ,’seats’ column
+	---> Ordered by 
+	floor with the highest number of seats ==> the floor with the least number of seats
+ */
+SELECT `floor_number` as `floor`, SUM(`nb_seats`) as seats FROM `cinema` group by `floor_number`;
+
+/* ex15 */
+
+SELECT REVERSE(SUBSTRING(`phone_number`, 2)) as `rebmunenohp` FROM `distrib` WHERE LEFT(`phone_number`, 2) = "05";
+
+/* ex16 */
+
+SELECT COUNT(*) as `movies` FROM `member_history` WHERE  DATE_FORMAT(`date`,'%M/%d') = "12/24" OR `date` BETWEEN '1999/01/01' AND '2007/07/27'
+
+/* ex17 
+   Display :  -the number of offered subscription in a column named ’nb_susc’, 
+
+   WHERE :as well as the average subscription price, rounded to the unit (below) in a column named ’av_susc’. 
+   -colum named ’ft’ displaying the sum of modulo 42 subscribtion lengths.
+
+ */
+
+/* ex18
+   Display the distributors who have the following 
+   - id_distrib 42, 62, 63, 64, 65, 66, 67, 68, 69, 71, 88, 89 and 90 
+   - as well as distibutors with ’y’ or ’Y’ twice in their name.
+   The final list will be a sample of 5 results starting at the third result
+ */
+
+SELECT * FROM `distrib` WHERE `id_distrib` IN (42,62,63,64,65,66,67,68,69,71,88,89,90) AND (LENGTH(`name`) - LENGTH(REPLACE(LOWER(`name`), 'y', ''))) = 2 LIMIT 2,5;
+
+/* ex19 
+
+   SELECT ABS(DATEDIFF(`oldest`.`date`, `recent`.`date`)) FROM `member_history` 
+   LEFT JOIN `member_history` AS `oldest` ON 1=1
+   LEFT JOIN `member_history` AS `recent` ON 1=1
+   ORDER BY `oldest`.`date`, `recent`.`date` DESC LIMIT 1
+ */
+
+SELECT DATEDIFF(MAX(DATE(`date`)), MIN(DATE(`date`))) as uptime
+FROM `member_history`;
+
+/* 20 
+   -and the title even if you can’t find a genre’s name or a distributor’s name.
+   -id_genre between 4 and 8 included.
+ */
+
+SELECT 
+`gnr`.`id_genre` AS `id_genre`,`gnr`.`name` AS `name_genre`,`dstr`.`id_distrib` AS `id_distrib`,`dstr`.`name` AS `name_distrib`,`flm`.`title` AS `title_film`
+FROM
+`film` AS `flm`
+LEFT JOIN
+`genre` AS `gnr` ON  `gnr`.`id_genre`= `flm`.`id_genre`
+LEFT JOIN
+`distrib` AS `dstr` ON  `dstr`.`id_distrib`= `flm`.`id_distrib`
+WHERE
+`gnr`.`id_genre` BETWEEN 4 AND 8;

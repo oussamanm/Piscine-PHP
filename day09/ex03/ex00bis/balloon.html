@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <style>
+            #balloon 
+            {
+                background-color: red;
+                border-radius: 50%;
+                width: 200px;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="balloon"></div>
+    </body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            const colors = [ 'red', 'green', 'blue' ];
+            let colorIndex = 0;
+            const _element = $('#balloon');
+
+            _element .click(balloon_click);
+            _element .mouseout(mouse_leave);
+
+            function balloon_click()
+            {
+                colorIndex = (colorIndex == 2) ? 0 : colorIndex + 1;
+                with_balloon = _element.width() + 10;
+                _element.css('background-color' , colors[colorIndex],);
+                set_size_balloone(with_balloon);
+            }
+
+            function mouse_leave()
+            {
+                colorIndex = (colorIndex == 0) ? 2: colorIndex - 1;
+                with_balloon = _element.width() - 5;
+                _element.css('background-color' , colors[colorIndex],);
+                set_size_balloone(with_balloon);
+            }
+
+            function set_size_balloone(size_ball)
+            {
+                if (size_ball > 420 || size_ball < 200)
+                {
+                    _element.css({
+                        'width': '200px',
+                        'height': '200px',
+                    });
+                }
+                else
+                {
+                    _element.css({
+                        'width': size_ball+'px',
+                        'height': size_ball+'px',
+                    });
+                }
+            }
+        });
+    </script>
+</html>
+
+<!-- 
+
+
+        function set_size_balloone(size_ball)
+        {
+            if (size_ball > 420 || size_ball < 200)
+            {
+                _element.css({
+                    'width': 200 + px,
+                    'height': 200 + px,
+                });
+            }
+            else
+            {
+                _element.css({
+                    'width': size_ball,
+                    'height': size_ball,
+                });
+            }
+        }
+
+        $(document).ready(function(){
+            const colors = [ 'red', 'green', 'blue' ];
+            let colorIndex = 0;
+            const _element = $('#balloon');
+
+            _element.click(function() {
+                colorIndex = (colorIndex == (colors.length - 1)) ? 0 : colorIndex + 1;
+                with_balloon = _element.width() + 10;
+                _element.css('background-color' , colors[colorIndex],);
+                if (with_balloon > 420 || with_balloon < 200)
+                {
+                    _element.css({
+                        'width': '200px',
+                        'height': '200px',
+                    });
+                }
+                else
+                {
+                    _element.css({
+                        'width': with_balloon+'px',
+                        'height': with_balloon+'px',
+                    });
+                }
+            });
+            _element.mouseout(function(){
+                colorIndex = (colorIndex == 0) ?  (colors.length - 1): colorIndex - 1;
+                with_balloon = _element.width() - 5;
+                _element.css('background-color' , colors[colorIndex],);
+                if (with_balloon > 420 || with_balloon < 200)
+                {
+                    _element.css({
+                        'width': '200px',
+                        'height': '200px',
+                    });
+                }
+                else
+                {
+                    _element.css({
+                        'width': with_balloon+'px',
+                        'height': with_balloon+'px',
+                    });
+                }
+            });
+
+        });
+ -->

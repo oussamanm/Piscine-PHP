@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input id="nbr1" type="text"></input>
+        <select id="opr">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input id="nbr2" type="text" ></input>
+		<input type="submit" value="Try me" id="tryme"/>
+    </body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            const _element = $('#tryme');
+            function useme()
+            {
+                alert("Please, use me...");
+                setTimeout(useme,30000);
+            }
+            setTimeout(useme,30000);
+        
+            _element.click(btn_calculate);
+
+            function calculate(n1, n2, oprator)
+            {
+                switch (oprator)
+                {
+                    case '+':
+                        return +n1 + +n2;
+                    case '-':
+                        return +n1 - +n2;
+                    case '*':
+                        return +n1 * +n2;
+                    case '/':
+                        return +n1 / +n2;
+                    case '%':
+                        return +n1 % +n2;
+                }
+                return 0;
+            }
+
+            function btn_calculate()
+            {
+                var nbr1 = parseInt($("#nbr1").val());
+                var nbr2 = parseInt($("#nbr2").val());
+                var opr = $("#opr").val();
+                if (isNaN(nbr1) || isNaN(nbr2) || nbr1 < 0 || nbr2 < 0)
+                {
+                    alert('Error :(');
+                    return ;
+                }
+                else
+                {
+                    if (nbr2 == 0 && (opr == '/' || opr == '%'))
+                    {
+                        alert("It’s over 9000!");
+                        console.log("It’s over 9000!");
+                        return ;
+                    }
+                    var result = calculate(nbr1, nbr2, opr);
+                    alert(result);
+                    console.log(result);
+                }
+            }
+        });
+
+    </script>
+</html>

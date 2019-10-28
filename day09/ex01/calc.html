@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input id="nbr1" type="text"></input>
+        <select id="opr">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input id="nbr2" type="text" ></input>
+		<input type="submit" value="Try me!" id="tryme" onclick="btn_calculate()"/>
+    </body>
+    <script>
+        const _element = document.getElementById('balloon');
+        function useme()
+        {
+            alert("Please, use me...");
+            setTimeout(useme,30000);
+        }
+        setTimeout(useme,30000);
+    
+        function calculate(n1, n2, oprator)
+        {
+
+            switch (oprator)
+            {
+                case '+':
+                    return +n1 + +n2;
+                case '-':
+                    return +n1 - +n2;
+                case '*':
+                    return +n1 * +n2;
+                case '/':
+                    return +n1 / +n2;
+                case '%':
+                    return +n1 % +n2;
+            }
+            return 0;
+        }
+
+        function btn_calculate()
+        {
+            var nbr1 = document.getElementById('nbr1').value;
+            var nbr2 = document.getElementById('nbr2').value;
+            var opr = document.getElementById('opr').value;
+            if (nbr1.trim() == "" || nbr2.trim() == "")
+            {
+                alert('Error :(');
+                return ;
+            }
+            if (nbr1 < 0 || nbr2 < 0)
+                alert('Error :(');
+            else
+            {
+                if (nbr2 == 0 && (opr == '/' || opr == '%'))
+                {
+                    alert("It’s over 9000!");
+                    console.log("It’s over 9000!");
+                    return ;
+                }
+                var result = calculate(nbr1, nbr2, opr);
+                alert(result);
+                console.log(result);
+            }
+        }
+
+    </script>
+</html>

@@ -1,0 +1,1 @@
+SELECT UPPER(`usr`.`last_name`) 'NAME', `usr`.`first_name`, `subs`.`price` FROM `user_card` AS `usr`, `member` AS `mbr`, `subscription` as `subs` WHERE `usr`.`id_user` = `mbr`.`id_user_card` AND `mbr`.`id_sub` = `subs`.`id_sub` AND `subs`.`price` > 42 ORDER BY `usr`.`last_name` ASC, `usr`.`first_name` ASC;

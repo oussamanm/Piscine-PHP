@@ -1,0 +1,1 @@
+INSERT INTO `ft_table` (`login`,`group`,`creation_date`) (SELECT `last_name`, 'other',`birthdate` FROM `user_card` WHERE LEFT(`last_name`, 1) = 'a' AND LENGTH(`last_name`) <= 8 ORDER BY `last_name` asc LIMIT 10);
